@@ -29,7 +29,7 @@ gem 'puma', '~> 3.0'
 gem 'bootsnap', require:false
 
 # Use SCSS for stylesheets
- gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
@@ -47,3 +47,5 @@ gem 'thor', '0.19.1'
 group :development do 
   gem 'listen', '~> 3.0.5'
 end
+
+gem 'bootstrap-sass'
