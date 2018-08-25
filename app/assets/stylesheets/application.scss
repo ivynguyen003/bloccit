@@ -13,3 +13,34 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+ .social-btn-wrapper {
+   display: flex;
+ }
+ .social-btn {
+  width: 180px;
+  text-align: center;
+  height:50px;
+  background-color:white;
+  padding: 16px 30px;
+  margin-top:20px;
+  box-shadow: 0px 8px 15px rgba(0,0,0,0.1);
+  outline:none;
+  border-radius:45px;
+  font-family: sans-serif;
+  transition: all 0.3s ease 0s;
+  letter-spacing:2.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color:black;
+ }
+
+ .social-btn:hover{
+   background-color: #2EE59D;
+   box-shadow: 0px 15px 20px rgba(46,229,157,0.4);
+   color:white;
+   text-decoration: none;
+   transform: translateY(-7px); //why doesn't work
+ }
