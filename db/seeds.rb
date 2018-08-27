@@ -17,13 +17,12 @@ posts = Post.all
 end
 
 puts "#{Post.count}"
-Post.find_or_create_by!(
+post1 = Post.find_or_create_by!(
   title:"Test Title 1",
   body:"Test Body 1"
 )
-post1 = Post.all
-puts "#{Post.count}"
 
+puts "#{Post.count}"
 
 puts "#{Comment.count}"
 Comment.find_or_create_by!(
