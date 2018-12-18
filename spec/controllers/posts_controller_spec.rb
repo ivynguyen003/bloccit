@@ -16,7 +16,7 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
-  # #1
+  # #1 create new sections
   describe "GET #new" do
     it "returns http success" do
       get :new
@@ -51,12 +51,24 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
-  # describe "GET #show" do
-  #   it "returns http success" do
-  #     get :show
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
+  describe "GET #show" do
+    it "returns http success" do
+
+      get :show, params: { id: my_post.id }
+      expect(response).to have_http_status(:success)
+    end
+
+    it "renders the #show view" do
+      get :show, params: { id: my_post.id }
+      expect(reponse).to render_template :show
+    end
+
+    it "renders my_post to @post" do 
+
+      get :show, params: { id: my_post.id }
+      expect(assigns(:post)).to eq(my_post)
+    end
+  end
 
 
 
