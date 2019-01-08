@@ -60,7 +60,7 @@ RSpec.describe PostsController, type: :controller do
 
     it "renders the #show view" do
       get :show, params: { id: my_post.id }
-      expect(reponse).to render_template :show
+      expect(response).to render_template :show
     end
 
     it "renders my_post to @post" do 
