@@ -28,7 +28,8 @@ end
 puts "#{Post.count}"
 post1 = Post.find_or_create_by!(
   title:"Test Title 1",
-  body:"Test Body 1"
+  body:"Test Body 1",
+  topic: Topic.new(name: "hello", description: "hello1", public: true)
 )
 
 puts "#{Post.count}"
