@@ -21,9 +21,14 @@ end
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'rails-controller-testing'
+  gem 'shoulda'
   gem 'pry-rails'
 end
 
+group :test do
+  gem 'shoulda-matchers', '4.0.0.rc1'
+  gem 'rails-controller-testing'
+end
 
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
