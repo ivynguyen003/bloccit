@@ -10,7 +10,7 @@ RSpec.describe User, type: :model do
   it {is_expected.to validate_presence_of(:email)}
   it {is_expected.to validate_uniqueness_of(:email)}
   it {is_expected.to validate_length_of(:email).is_at_least(3)}
-  it{is_expected.to allow_value("user@bloccit.com").for(email)}
+  it{is_expected.to allow_value("user@bloccit.com").for(:email)}
 
   #should test for password
   it {is_expected.to validate_presence_of(:password)}
@@ -20,6 +20,15 @@ RSpec.describe User, type: :model do
   describe "attributes" do
     it "should have name and email attributes" do
       expect(user).to have_attributes(name: "Bloccit User", email: "user@bloccit.com")
+    end
+    it "should respond to name" do
+      expect(user).to respond_to(:email)
+    end
+
+    it "should format the user's name" do
+    user.name = "bloc user"
+    user.save
+    expect(user.name).to eq "Bloc User"
     end
   end
   
@@ -35,6 +44,5 @@ RSpec.describe User, type: :model do
       expect(user_with_invalid_email).to_not be_valid  
     end
   end
-
 
 end
