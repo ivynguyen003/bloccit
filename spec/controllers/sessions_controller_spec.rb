@@ -17,13 +17,13 @@ RSpec.describe SessionsController, type: :controller do
     end
     
     it "initializes a session" do 
-      post :create, params: { sessions: { email: my_user.email, password: my_user.password } }
-      expect(session[:user_id]).to eq my_user.id
+      post :create, params: { session: { email: my_user.email, password: my_user.password } }
+      expect(sessions[:user_id]).to eq my_user.id
     end
 
     it "does not add  a user id to session due to missing password" do 
       post :create, params: { session: { email: my_user.email } }
-      expect(session[:user_id]).to be_nil
+      expect(sessions[:user_id]).to be_nil
     end
 
     it "flashes #error with bad email address" do
@@ -39,16 +39,6 @@ RSpec.describe SessionsController, type: :controller do
     it "redirects to the root view" do
       post :create, params: { session: { email: my_user.email, password: my_user.password } }
       expect(response).to redirect_to(root_path)
-    end
-
-    it "sets user password_confirmation properly" do 
-      post :create, params: { user: new_user_attributes}
-      expect(assigns(:user).password_confirmation).to eq new_user_attribute[:password_confirmation]
-    end
-
-    it "logs the user in after sign up" do
-      post :create, params: { user: new_user_attributes }
-      expect(session[:user_id]).to eq assigns(:user).id
     end
   end
 
