@@ -18,12 +18,12 @@ RSpec.describe SessionsController, type: :controller do
     
     it "initializes a session" do 
       post :create, params: { session: { email: my_user.email, password: my_user.password } }
-      expect(sessions[:user_id]).to eq my_user.id
+      expect(session[:user_id]).to eq my_user.id
     end
 
     it "does not add  a user id to session due to missing password" do 
       post :create, params: { session: { email: my_user.email } }
-      expect(sessions[:user_id]).to be_nil
+      expect(session[:user_id]).to be_nil
     end
 
     it "flashes #error with bad email address" do
