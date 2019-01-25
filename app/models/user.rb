@@ -2,7 +2,9 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
 
   before_save { self.email = email.downcase if email.present? }
+  before_save { self.role ||= :member}
   before_save :format_name
+  
 
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -17,8 +19,9 @@ class User < ApplicationRecord
              length: { minimum: 3, maximum: 254 },
              format: { :with => EMAIL_REGEX }
 
-
   has_secure_password
+
+  enum role: [:member, :admin]
 
   def format_name
     if name 
