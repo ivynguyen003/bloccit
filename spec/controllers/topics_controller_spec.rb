@@ -74,11 +74,28 @@ RSpec.describe TopicsController, type: :controller do
     end
   end
 
+context "moderator" do
+    before do
+      user = User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "helloworld", role: :moderator)
+      create_session(user)
+    end
+      describe "GET index" do
+      it "returns http success" do
+        get :index
+        expect(response).to have_http_status(:success)
+      end
+
+      it "assigns Topic.all to topic" do
+        get :index
+        expect(assigns(:topics)).to eq([my_topic])
+      end
+    end
+
   context "member user" do
     before do
       user = User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "helloworld", role: :member)
       create_session(user)
-    end
+    end 
 
     describe "GET index" do
       it "returns http success" do
